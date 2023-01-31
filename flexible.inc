@@ -228,21 +228,21 @@ function panels_flexible_convert_settings(&$settings, &$layout) {
 
       for ($col = 1; $col <= intval($old["row_$row"]['columns']); $col++) {
         // Create entry for the region:
-        $settings['items']["row_${row}_$col"] = array(
+        $settings['items']["row_{$row}_$col"] = array(
           'type' => 'region',
           'width' => $old["row_$row"]["width_$col"],
           'width_type' => '%',
           'parent' => "row_$row",
         );
         // Add entry for the region to the row's children:
-        $settings['items']["row_$row"]['children'][] = "row_${row}_$col";
+        $settings['items']["row_$row"]['children'][] = "row_{$row}_$col";
 
         // Apply the proper title to the region:
         if (!empty($old["row_$row"]['names'][$col - 1])) {
-          $settings['items']["row_${row}_$col"]['title'] = $old["row_$row"]['names'][$col - 1];
+          $settings['items']["row_{$row}_$col"]['title'] = $old["row_$row"]['names'][$col - 1];
         }
         else {
-          $settings['items']["row_${row}_$col"]['title'] = t("Row @row, Column @col", array('@row' => $row, '@col' => $col));
+          $settings['items']["row_{$row}_$col"]['title'] = t("Row @row, Column @col", array('@row' => $row, '@col' => $col));
         }
       }
     }
